@@ -45,7 +45,7 @@
 //   },
 //   "appRatingConfig": {
 //     'showOnOpen': false,
-//     'android': 'com.inspireui.fluxstore',
+//     'android': 'com.joynagar.technoinsider',
 //     'ios': '1469772800',
 //     'minDays': 7,
 //     'minLaunches': 10,
@@ -540,7 +540,7 @@
 //         //The link your app will open
 //         "link": "https://mstore.io/",
 //         //----------* Android Setting *----------//
-//         "androidPackageName": "com.inspireui.fluxstore",
+//         "androidPackageName": "com.joynagar.technoinsider",
 //         "androidAppMinimumVersion": 1,
 //         //----------* iOS Setting *----------//
 //         "iOSBundleId": "com.inspireui.mstore.flutter",
@@ -1117,12 +1117,12 @@
 //     },
 //     "applePayConfig": {
 //       "enable": true,
-//       "merchantId": "merchant.com.inspireui.fluxstore",
+//       "merchantId": "merchant.com.joynagar.technoinsider",
 //     },
 //     "googlePayConfig": {
 //       "enable": true,
 //       "stripePublishableKey": "pk_test_O3awus9i5mA2wIX9a7pU3MSi00gZPcpJWX",
-//       "merchantId": "merchant.com.inspireui.fluxstore"
+//       "merchantId": "merchant.com.joynagar.technoinsider"
 //     },
 //   },
 //   "stripeConfig": {
@@ -1152,7 +1152,7 @@
 //     "secret":
 //         "ECbFREri7NFj64FI_9WzS6A0Az2DqNLrVokBo0ZBu4enHZKMKOvX45v9Y1NBPKFr6QJv2KaSp5vk5A1G",
 //     "returnUrl":
-//         "com.inspireui.fluxstore://paypalpay", // Example: "your.android.package.name:://paypalpay"
+//         "com.joynagar.technoinsider://paypalpay", // Example: "your.android.package.name:://paypalpay"
 //     "production": false,
 //     "paymentMethodId": "paypal", //ppcp-gateway
 //     "enabled": true,
@@ -1222,11 +1222,11 @@
 //   },
 //   "inAppPurchaseConfig": {
 //     'consumableProductIDs': [
-//       'com.inspireui.fluxstore.test',
+//       'com.joynagar.technoinsider.test',
 //     ],
 //     'nonConsumableProductIDs': [],
 //     'subscriptionProductIDs': [
-//       'com.inspireui.fluxstore.subscription.test',
+//       'com.joynagar.technoinsider.subscription.test',
 //     ],
 //     "enabled": false
 //   },
@@ -1266,7 +1266,7 @@
 //     'merchantId': 'GANGSTARPGUAT',
 //     'saltKey': '7eb940c6-b785-42e2-98ca-0419ebf5a219',
 //     'saltKeyIndex': '1',
-//     "androidPackageName": "com.inspireui.fluxstore",
+//     "androidPackageName": "com.joynagar.technoinsider",
 //     "iOSBundleId": "com.inspireui.mstore.flutter",
 //     'production': false,
 //     'enabled': true
@@ -1750,7 +1750,7 @@ Map<String, dynamic> environment = {
     "useInternationalFormat": true,
     "selectorFlagAsPrefixIcon": true,
     "showCountryFlag": true,
-    "customCountryList": [], // List alpha_2_code. E.g: ["VN", "AU"]
+    "customCountryList": ["IN"], // List alpha_2_code. E.g: ["VN", "AU"]
     "selectorType": "BOTTOM_SHEET", // [DROPDOWN, BOTTOM_SHEET, DIALOG]
   },
   "appRatingConfig": {
@@ -1841,7 +1841,7 @@ Map<String, dynamic> environment = {
     "EnableSyncCartToWebsite": false,
 
     /// Enable firebase to support FCM, realtime chat for Fluxstore MV
-    "EnableFirebase": true,
+    "EnableFirebase": false,
 
     /// ratio Product Image, default value is 1.2 = height / width
     "RatioProductImage": 1.2,

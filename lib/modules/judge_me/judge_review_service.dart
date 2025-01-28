@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:inspireui/utils/logs.dart';
-
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import '../../models/entities/paging_response.dart';
 import '../../models/entities/rating_count.dart';
 import '../../models/entities/review.dart';
@@ -102,6 +103,41 @@ class JudgeReviewService extends ReviewService {
     }
     return null;
   }
+
+// Future<String?> _getJudgeProductId({
+//   required String externalProductId,
+// }) async {
+//   final uri = Uri.parse(_JudgeEndpoints.product).replace(queryParameters: {
+//     'external_id': externalProductId.numberOfProductId,
+//   });
+
+//   try {
+//     final response = await http.get(uri);
+
+//     if (response.statusCode == 200) {
+//       final contentType = response.headers['content-type'];
+
+//       if (contentType != null && contentType.contains('application/json')) {
+//         final data = jsonDecode(response.body);
+//         if (data is Map) {
+//           final productId = data['product']['id'];
+//           if (productId is int) {
+//             return productId.toString();
+//           }
+//         }
+//       } else {
+//         print('Error: Unexpected content type: $contentType');
+//       }
+//     } else {
+//       print('Error: ${response.statusCode}, ${response.reasonPhrase}');
+//     }
+//   } catch (e) {
+//     print('Error fetching rating: $e');
+//   }
+
+//   return null;
+// }
+
 
   @override
   Future<RatingCount?> getProductRatingCount(String productId) async {

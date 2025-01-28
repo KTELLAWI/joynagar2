@@ -572,7 +572,7 @@ class DefaultConfig {
     'merchantId': 'GANGSTARPGUAT',
     'saltKey': '7eb940c6-b785-42e2-98ca-0419ebf5a219',
     'saltKeyIndex': '1',
-    'androidPackageName': 'com.inspireui.fluxstore',
+    'androidPackageName': 'com.joynagar.technoinsider',
     'iOSBundleId': 'com.inspireui.mstore.flutter',
     'production': false,
     'enabled': false,
@@ -644,7 +644,7 @@ class DefaultConfig {
         //The link your app will open
         'link': 'https://mstore.io/',
         //----------* Android Setting *----------//
-        'androidPackageName': 'com.inspireui.fluxstore',
+        'androidPackageName': 'com.joynagar.technoinsider',
         'androidAppMinimumVersion': 1,
         //----------* iOS Setting *----------//
         'iOSBundleId': 'com.inspireui.mstore.flutter',

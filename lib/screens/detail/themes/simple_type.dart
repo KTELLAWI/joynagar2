@@ -3,6 +3,7 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flux_ui/flux_ui.dart';
 import 'package:provider/provider.dart';
+import 'dart:math';
 
 import '../../../common/config.dart';
 import '../../../common/constants.dart';
@@ -58,7 +59,7 @@ class _SimpleLayoutState extends State<SimpleLayout>
       duration: const Duration(milliseconds: 450),
       value: 1.0,
     );
-     getProductCountRating();
+    // getProductCountRating();
   }
 
   @override
@@ -79,7 +80,27 @@ class _SimpleLayoutState extends State<SimpleLayout>
   }
 void getProductCountRating() async {
   try {
-    final rating = await Services().api.getProductRatingCount(product.id);  
+    final rating = await Services().api.getProductRatingCount(product.id); 
+    final ratingCount = 
+  (rating?.oneStar ?? 0) +
+  (rating?.twoStar ?? 0) +
+  (rating?.threeStar ?? 0) +
+  (rating?.fourStar ?? 0) +
+  (rating?.fiveStar ?? 0);
+
+   final averageRating = max(
+  (
+    (rating?.oneStar ?? 0) * 1 +
+    (rating?.twoStar ?? 0) * 2 +
+    (rating?.threeStar ?? 0) * 3 +
+    (rating?.fourStar ?? 0) * 4 +
+    (rating?.fiveStar ?? 0) * 5
+  ) / ratingCount, 
+  0
+);
+
+          product.averageRating = averageRating.toDouble();
+          product.ratingCount=ratingCount.toInt();
     setState(() {
       // Update your state with the fetched rating
       print("rating");

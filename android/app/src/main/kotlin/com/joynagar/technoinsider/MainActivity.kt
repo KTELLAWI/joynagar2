@@ -1,4 +1,4 @@
-package com.inspireui.fluxstore
+package com.joynagar.technoinsider
 
 import android.app.NotificationManager
 import android.content.Context

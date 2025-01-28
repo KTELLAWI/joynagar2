@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:flux_localization/flux_localization.dart';
@@ -7,6 +8,7 @@ import 'package:flux_ui/flux_ui.dart';
 import 'package:graphql/client.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
+import '../../../services/index.dart';
 
 import '../../../common/config.dart' show kAdvanceConfig, kShopifyPaymentConfig;
 import '../../../common/constants.dart';
@@ -200,6 +202,36 @@ class ShopifyService extends BaseServices {
       return const PagingResponse(data: <Category>[]);
     }
   }
+  Future<Product?> getProductCountRating(product) async {
+  try {
+    final rating = await Services().api.getProductRatingCount(product.id); 
+    final ratingCount = 
+  (rating?.oneStar ?? 0) +
+  (rating?.twoStar ?? 0) +
+  (rating?.threeStar ?? 0) +
+  (rating?.fourStar ?? 0) +
+  (rating?.fiveStar ?? 0);
+
+   final averageRating =ratingCount > 0 ? max(
+  (
+    (rating?.oneStar ?? 0) * 1 +
+    (rating?.twoStar ?? 0) * 2 +
+    (rating?.threeStar ?? 0) * 3 +
+    (rating?.fourStar ?? 0) * 4 +
+    (rating?.fiveStar ?? 0) * 5
+  ) / ratingCount, 
+  0
+)
+: 0
+;
+
+          product.averageRating = averageRating.toDouble();
+          product.ratingCount=ratingCount.toInt();
+          return product;
+  } catch (e) {
+    print("Error fetching rating: $e");
+  }
+}
 
   Future<List<Product>?> fetchProducts({
     int page = 1,
@@ -258,7 +290,9 @@ class ShopifyService extends BaseServices {
                 product['availableForSale'] == false) {
               continue;
             }
-            list.add(Product.fromShopify(product));
+          final pro = await getProductCountRating(Product.fromShopify(product));
+
+            list.add(pro!);
           }
         }
       }
@@ -334,7 +368,8 @@ class ShopifyService extends BaseServices {
               product['availableForSale'] == false) {
             continue;
           }
-          list.add(Product.fromShopify(product));
+          final pro = await getProductCountRating(Product.fromShopify(product));
+          list.add(pro!);
         }
       }
 
@@ -534,7 +569,8 @@ class ShopifyService extends BaseServices {
               product['availableForSale'] == false) {
             continue;
           }
-          list.add(Product.fromShopify(product));
+          final pro = await getProductCountRating(Product.fromShopify(product));
+          list.add(pro!);
         }
       }
       return list;
@@ -968,7 +1004,8 @@ class ShopifyService extends BaseServices {
       printLog(result.exception.toString());
     }
     final product = Product.fromShopify(result.data!['node']);
-    return product;
+    final pro  = await getProductCountRating(product);
+    return pro!;
   }
 
   Future<Map<String, dynamic>?> checkoutLinkUser(
