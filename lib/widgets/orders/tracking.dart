@@ -121,7 +121,7 @@ class _TimelineTrackingState extends State<TimelineTracking> {
             height: 25,
             decoration: BoxDecoration(
                 color:
-                    isActive ? Theme.of(context).primaryColor : Colors.black54,
+                    isActive ? Colors.green : Colors.black54,
                 borderRadius: BorderRadius.circular(20)),
             child: Center(
               child: Text(
@@ -207,7 +207,7 @@ class _TimelineTrackingState extends State<TimelineTracking> {
     return Container(
       width: isAxisVertical ? (visible ? 2.0 : 0.0) : double.infinity,
       height: isAxisVertical ? 30 : (visible ? 2.0 : 0.0),
-      color: isActive ? Theme.of(context).primaryColor : Colors.grey.shade400,
+      color: isActive ? Colors.green  : Colors.grey.shade400,
     );
   }
 
