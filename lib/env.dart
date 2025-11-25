@@ -2842,7 +2842,7 @@ Map<String, dynamic> environment = {
     }
   ],
   "lightConfig": {
-    "MainColor": "ff064a4b",
+    "MainColor": "ffFF691A",
     "logo": "assets/images/logo_light.png"
   },
   "productCard": {
